@@ -2,26 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* เว็บสำหรับเด็ก — ใช้ธีมสว่างสดใสอย่างเดียว ไม่มี dark mode */
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(180deg, #fdf6ff 0%, #eef7ff 100%);
+  min-height: 100dvh;
+  color: #3b3355;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* กันหน้าจอเลื่อน/ซูมเองตอนเด็กลากของบนจอสัมผัส */
+.touch-none {
+  touch-action: none;
 }

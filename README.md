@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# สนุกเรียนรู้ 🌈
 
-## Getting Started
+เว็บสื่อการเรียนรู้สำหรับเด็ก — รวมเกมการศึกษาไว้ในเว็บเดียว เปิดแล้วเล่นได้ทันที
+ไม่ต้องสมัครสมาชิก ไม่มี database
 
-First, run the development server:
+เกมปัจจุบัน:
+
+- 🎨 **จัดหมวดหมู่สี** — ลากสิ่งของไปใส่กล่องสีเดียวกัน (กำลังพัฒนา)
+
+## Tech Stack
+
+- Next.js 14 (App Router) + TypeScript
+- Tailwind CSS v3
+- ฟอนต์ [Mali](https://fonts.google.com/specimen/Mali) (ไทย ทรงกลม เหมาะกับเด็ก)
+- เสียงเอฟเฟกต์สังเคราะห์ด้วย Web Audio API — ไม่มีไฟล์เสียง
+- ลากวางเขียนเองด้วย Pointer Events — รองรับทั้งเมาส์และจอสัมผัส
+
+## เริ่มใช้งาน
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+เปิด http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| คำสั่ง          | ทำอะไร                    |
+| --------------- | ------------------------- |
+| `npm run dev`   | รัน dev server            |
+| `npm run build` | สร้าง production build    |
+| `npm run start` | รัน production server     |
+| `npm run lint`  | ตรวจ lint                 |
 
-## Learn More
+## โครงสร้างโปรเจกต์
 
-To learn more about Next.js, take a look at the following resources:
+```
+app/
+  page.tsx                # หน้าแรก = game hub
+  games/color-sort/       # หน้าเกมจัดหมวดหมู่สี
+components/
+  games/color-sort/       # component เฉพาะเกม
+  ui/                     # component ใช้ร่วม
+lib/
+  games.ts                # registry รายชื่อเกมทั้งหมด
+  sounds.ts               # Web Audio helper
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+การเพิ่มเกมใหม่: เพิ่ม entry ใน `lib/games.ts` แล้วสร้างหน้าใต้ `app/games/<id>/`
+— หน้า hub ดึงรายชื่อจาก registry อัตโนมัติ
