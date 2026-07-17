@@ -3,13 +3,65 @@
 @tailwind utilities;
 
 /* เว็บสำหรับเด็ก — ใช้ธีมสว่างสดใสอย่างเดียว ไม่มี dark mode */
+html {
+  /* กัน pull-to-refresh / bounce ตอนลากของใกล้ขอบจอมือถือ */
+  overscroll-behavior: none;
+}
 body {
   background: linear-gradient(180deg, #fdf6ff 0%, #eef7ff 100%);
   min-height: 100dvh;
   color: #3b3355;
+  overscroll-behavior: none;
+  /* กัน UI โดน notch / home indicator บนไอโฟน-ไอแพดรุ่นใหม่ */
+  padding: env(safe-area-inset-top) env(safe-area-inset-right)
+    env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
-/* กันหน้าจอเลื่อน/ซูมเองตอนเด็กลากของบนจอสัมผัส */
+/* กันหน้าจอเลื่อน/ซูมเอง + เมนู long-press ของเบราว์เซอร์ ตอนเด็กลากของบนจอสัมผัส */
 .touch-none {
   touch-action: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+}
+
+/* ตัดดีเลย์ double-tap และกันซูมพลาดตอนแตะปุ่ม/การ์ดรัวๆ บนมือถือ-แท็บเล็ต */
+.touch-manipulation {
+  touch-action: manipulation;
+}
+
+/* สั่นเบาๆ ตอนลากของไปวางผิดกล่อง — feedback ที่ไม่รุนแรง ไม่ลงโทษ */
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-8px);
+  }
+  40% {
+    transform: translateX(8px);
+  }
+  60% {
+    transform: translateX(-6px);
+  }
+  80% {
+    transform: translateX(6px);
+  }
+}
+.animate-shake {
+  animation: shake 0.4s ease-in-out;
+}
+
+@keyframes pop-in {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.animate-pop-in {
+  animation: pop-in 0.25s ease-out;
 }

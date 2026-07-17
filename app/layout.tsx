@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Mali } from "next/font/google";
 import "./globals.css";
 
@@ -11,6 +11,13 @@ const mali = Mali({
 export const metadata: Metadata = {
   title: "สนุกเรียนรู้ — เกมการศึกษาสำหรับเด็ก",
   description: "รวมเกมการศึกษาสนุกๆ สำหรับเด็ก เล่นได้เลยไม่ต้องสมัคร",
+};
+
+// viewportFit: "cover" กัน UI ไปโดน notch/safe area บนไอโฟนรุ่นใหม่
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({
