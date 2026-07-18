@@ -19,4 +19,12 @@ export const games: GameInfo[] = [
     href: "/games/color-sort",
     available: true,
   },
+  {
+    id: "season-dress",
+    title: "แต่งตัวตามฤดู",
+    description: "ลากเสื้อผ้าให้ถูกฤดู แต่งให้น้องพร้อมออกไปเล่น",
+    emoji: "👕",
+    href: "/games/season-dress",
+    available: true,
+  },
 ];
