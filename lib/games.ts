@@ -35,4 +35,12 @@ export const games: GameInfo[] = [
     href: "/games/size-sort",
     available: true,
   },
+  {
+    id: "word-match",
+    title: "เลือกคำให้ตรงกับภาพ",
+    description: "ดูภาพแล้วแตะเลือกคำที่สะกดถูกต้อง ฝึกอ่านและสะกดคำ",
+    emoji: "🔤",
+    href: "/games/word-match",
+    available: true,
+  },
 ];
