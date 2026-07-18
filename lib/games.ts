@@ -27,4 +27,12 @@ export const games: GameInfo[] = [
     href: "/games/season-dress",
     available: true,
   },
+  {
+    id: "size-sort",
+    title: "เรียงขนาด",
+    description: "ลากของแต่ละชิ้นไปเรียงจากเล็กไปใหญ่ให้ถูกช่อง",
+    emoji: "📏",
+    href: "/games/size-sort",
+    available: true,
+  },
 ];
