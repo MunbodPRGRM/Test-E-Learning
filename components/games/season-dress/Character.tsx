@@ -1,8 +1,19 @@
-// ตัวละครพื้นฐาน (มานุษย์อย่างง่าย) ให้ลากเสื้อผ้ามาแต่งรอบๆ
-// วาดเป็น SVG เรียบๆ ไม่ใส่เสื้อผ้าในตัวกราฟิก เพราะของที่แต่งจะแสดงเป็นป้ายวงกลม
-// ล้อมรอบตัวละคร (ดูใน GameBoard.tsx)
+// ตัวละครพื้นฐานให้ลากเสื้อผ้ามาแต่ง — เสื้อผ้าที่ใส่แล้ว (prop worn) จะถูกวาดเป็น
+// เลเยอร์ SVG ทับตัวในพิกัดเดียวกัน ทำให้เห็นตัวละครใส่ชิ้นนั้นจริงๆ
 
-export default function Character({ size = 140 }: { size?: number }) {
+import { ClothingArt } from "./ClothingLayers";
+import type { ClothingItem, Slot } from "./levels";
+
+// ลำดับการวาดทับ: เสื้อทับขอบรองเท้า, หมวกทับผม, ของเสริม (แว่น/ผ้าพันคอ/ร่ม) บนสุด
+const layerOrder: Slot[] = ["feet", "body", "head", "accessory"];
+
+export default function Character({
+  worn = {},
+  size = 140,
+}: {
+  worn?: Partial<Record<Slot, ClothingItem>>;
+  size?: number;
+}) {
   return (
     <svg
       width={size}
@@ -34,6 +45,16 @@ export default function Character({ size = 140 }: { size?: number }) {
       />
       <circle cx="38" cy="52" r="5" fill="#ffb4a2" opacity="0.6" />
       <circle cx="82" cy="52" r="5" fill="#ffb4a2" opacity="0.6" />
+
+      {/* เสื้อผ้าที่ใส่แล้ว */}
+      {layerOrder.map((slot) => {
+        const item = worn[slot];
+        return item ? (
+          <g key={slot} className="animate-pop-in" style={{ transformOrigin: "60px 80px" }}>
+            <ClothingArt itemId={item.id} />
+          </g>
+        ) : null;
+      })}
     </svg>
   );
 }

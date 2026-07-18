@@ -13,6 +13,7 @@ import {
   type Slot,
 } from "./levels";
 import Character from "./Character";
+import { ClothingArt, trayViewBox } from "./ClothingLayers";
 import { playClick, playCorrect, playPickup, playWin, playWrong } from "@/lib/sounds";
 
 type DragState = {
@@ -199,7 +200,7 @@ export default function GameBoard({
       >
         <div className="relative h-[260px] w-[220px]">
           <div className="absolute inset-x-0 top-5 flex justify-center">
-            <Character size={180} />
+            <Character size={180} worn={worn} />
           </div>
           {level.activeSlots.map((slot) => {
             const wornItem = worn[slot];
@@ -212,15 +213,23 @@ export default function GameBoard({
                 }}
                 className={`absolute ${slotPosition[slot]} flex flex-col items-center gap-1`}
               >
-                <div
-                  className={`flex h-16 w-16 items-center justify-center rounded-full border-4
-                    border-dashed border-white bg-white/70 text-3xl shadow-md transition-all
-                    sm:h-20 sm:w-20 sm:text-4xl ${
-                      isHover ? "scale-110 border-solid border-purple-400 ring-4 ring-purple-300" : ""
-                    } ${wornItem ? "animate-pop-in border-solid" : ""}`}
-                >
-                  {wornItem ? <span aria-hidden>{wornItem.emoji}</span> : null}
-                </div>
+                {wornItem ? (
+                  // ใส่แล้ว — ย่อป้ายเป็น ✓ เล็กๆ จะได้ไม่บังเสื้อผ้าที่ขึ้นบนตัวละคร
+                  <div
+                    className="animate-pop-in flex h-8 w-8 items-center justify-center
+                      rounded-full bg-green-400 text-base font-bold text-white shadow-md sm:h-9 sm:w-9"
+                  >
+                    ✓
+                  </div>
+                ) : (
+                  <div
+                    className={`flex h-16 w-16 items-center justify-center rounded-full border-4
+                      border-dashed border-white bg-white/70 shadow-md transition-all
+                      sm:h-20 sm:w-20 ${
+                        isHover ? "scale-110 border-solid border-purple-400 ring-4 ring-purple-300" : ""
+                      }`}
+                  />
+                )}
                 <span className="rounded-full bg-white/80 px-2 py-0.5 text-xs font-semibold text-purple-700 sm:text-sm">
                   {slotDefs[slot].label}
                 </span>
@@ -262,9 +271,14 @@ export default function GameBoard({
                   : undefined
               }
             >
-              <span className="text-3xl sm:text-4xl" aria-hidden>
-                {item.emoji}
-              </span>
+              <svg
+                viewBox={trayViewBox[item.id]}
+                className="h-11 w-14 sm:h-12 sm:w-16"
+                preserveAspectRatio="xMidYMid meet"
+                aria-hidden
+              >
+                <ClothingArt itemId={item.id} />
+              </svg>
               <span className="text-[10px] font-semibold text-slate-500 sm:text-xs">
                 {item.name}
               </span>

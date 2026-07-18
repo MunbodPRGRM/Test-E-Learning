@@ -47,26 +47,26 @@ export type ClothingItem = {
   id: string;
   season: Season;
   slot: Slot;
-  emoji: string;
   name: string; // ชื่อเสื้อผ้าภาษาไทย
 };
 
+// id ต้องตรงกับ art ใน ClothingLayers.tsx (รูปวาด SVG ของแต่ละชิ้น)
 /** เสื้อผ้าทั้งหมดในเกม 4 ชิ้นต่อฤดู (head/body/feet/accessory) */
 export const clothingItems: ClothingItem[] = [
-  { id: "summer-head", season: "summer", slot: "head", emoji: "👒", name: "หมวกปีกกว้าง" },
-  { id: "summer-body", season: "summer", slot: "body", emoji: "👕", name: "เสื้อยืด" },
-  { id: "summer-feet", season: "summer", slot: "feet", emoji: "🩴", name: "รองเท้าแตะ" },
-  { id: "summer-accessory", season: "summer", slot: "accessory", emoji: "🕶️", name: "แว่นกันแดด" },
+  { id: "summer-head", season: "summer", slot: "head", name: "หมวกปีกกว้าง" },
+  { id: "summer-body", season: "summer", slot: "body", name: "เสื้อยืด" },
+  { id: "summer-feet", season: "summer", slot: "feet", name: "รองเท้าแตะ" },
+  { id: "summer-accessory", season: "summer", slot: "accessory", name: "แว่นกันแดด" },
 
-  { id: "rainy-head", season: "rainy", slot: "head", emoji: "⛑️", name: "หมวกกันฝน" },
-  { id: "rainy-body", season: "rainy", slot: "body", emoji: "🦺", name: "เสื้อกันฝน" },
-  { id: "rainy-feet", season: "rainy", slot: "feet", emoji: "🥾", name: "รองเท้าบูท" },
-  { id: "rainy-accessory", season: "rainy", slot: "accessory", emoji: "☂️", name: "ร่ม" },
+  { id: "rainy-head", season: "rainy", slot: "head", name: "หมวกกันฝน" },
+  { id: "rainy-body", season: "rainy", slot: "body", name: "เสื้อกันฝน" },
+  { id: "rainy-feet", season: "rainy", slot: "feet", name: "รองเท้าบูท" },
+  { id: "rainy-accessory", season: "rainy", slot: "accessory", name: "ร่ม" },
 
-  { id: "winter-head", season: "winter", slot: "head", emoji: "🧢", name: "หมวกไหมพรม" },
-  { id: "winter-body", season: "winter", slot: "body", emoji: "🧥", name: "เสื้อกันหนาว" },
-  { id: "winter-feet", season: "winter", slot: "feet", emoji: "👢", name: "บูทกันหนาว" },
-  { id: "winter-accessory", season: "winter", slot: "accessory", emoji: "🧣", name: "ผ้าพันคอ" },
+  { id: "winter-head", season: "winter", slot: "head", name: "หมวกไหมพรม" },
+  { id: "winter-body", season: "winter", slot: "body", name: "เสื้อกันหนาว" },
+  { id: "winter-feet", season: "winter", slot: "feet", name: "บูทกันหนาว" },
+  { id: "winter-accessory", season: "winter", slot: "accessory", name: "ผ้าพันคอ" },
 ];
 
 export type LevelId = "easy" | "medium" | "hard";
