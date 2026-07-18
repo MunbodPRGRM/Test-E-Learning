@@ -16,7 +16,8 @@ export const trayViewBox: Record<string, string> = {
   "rainy-feet": "31 128 60 32",
   "winter-feet": "31 128 60 32",
   "summer-accessory": "26 32 68 20",
-  "rainy-accessory": "72 40 48 92",
+  // crop เน้นตัวร่ม (โชว์ก้านแค่ท่อนบน) ให้เห็นเป็นร่มชัดๆ ในกระบะ
+  "rainy-accessory": "70 32 52 64",
   "winter-accessory": "36 56 48 50",
 };
 
@@ -95,12 +96,13 @@ export function ClothingArt({ itemId }: { itemId: string }): ReactElement | null
     case "rainy-accessory": // ร่ม
       return (
         <g>
-          <path d="M98 42 L98 50" stroke="#7a5c43" strokeWidth="3" strokeLinecap="round" />
+          <path d="M96 34 L96 42" stroke="#7a5c43" strokeWidth="3.5" strokeLinecap="round" />
           <path
-            d="M78 66 Q98 42 118 66 Q113 60 108 66 Q103 60 98 66 Q93 60 88 66 Q83 60 78 66 Z"
+            d="M74 64 Q96 34 118 64 Q112.5 57 107 64 Q101.5 57 96 64 Q90.5 57 85 64 Q79.5 57 74 64 Z"
             fill="#e2564b"
           />
-          <path d="M98 66 L98 122 Q98 130 90 128" stroke="#7a5c43" strokeWidth="3.5" fill="none" strokeLinecap="round" />
+          <path d="M96 44 Q84 48 77 62 M96 44 Q108 48 115 62" fill="none" stroke="#c94b41" strokeWidth="2" />
+          <path d="M96 64 L96 122 Q96 130 88 128" stroke="#7a5c43" strokeWidth="3.5" fill="none" strokeLinecap="round" />
         </g>
       );
 
