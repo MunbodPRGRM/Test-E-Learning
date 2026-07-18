@@ -197,9 +197,9 @@ export default function GameBoard({
         className={`flex w-full justify-center rounded-3xl bg-gradient-to-br p-8 transition-colors
           duration-500 sm:p-12 ${seasonDef.bgClass}`}
       >
-        <div className="relative h-[210px] w-[160px] sm:h-[240px] sm:w-[180px]">
-          <div className="absolute inset-x-0 top-6 flex justify-center">
-            <Character size={130} />
+        <div className="relative h-[260px] w-[220px]">
+          <div className="absolute inset-x-0 top-5 flex justify-center">
+            <Character size={180} />
           </div>
           {level.activeSlots.map((slot) => {
             const wornItem = worn[slot];
